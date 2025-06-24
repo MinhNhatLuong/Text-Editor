@@ -48,6 +48,53 @@ npm run dev
 3. You can click the "Generate HTML" button to manually update the HTML code
 4. Alternatively, enable the "Auto-update HTML" option to see real-time HTML updates as you type
 
+## Deployment to Render
+
+### Prerequisites
+- A GitHub account with your project repository
+- A Render account
+- TinyMCE API key
+
+### Steps to Deploy
+
+1. **Push your code to GitHub**
+   - Make sure your project is pushed to a GitHub repository
+
+2. **Sign up for Render**
+   - Go to [render.com](https://render.com/) and create an account if you don't have one
+
+3. **Create a new Static Site**
+   - From the Render dashboard, click "New" and select "Static Site"
+   - Connect your GitHub account and select your repository
+   - Configure the following settings:
+     - **Name**: Choose a name for your site
+     - **Branch**: Select the branch to deploy (usually `main`)
+     - **Build Command**: `npm install && npm run build`
+     - **Publish Directory**: `dist`
+
+4. **Set Environment Variables**
+   - In the "Environment" section, add your TinyMCE API key:
+     - Key: `VITE_TINYMCE_API_KEY`
+     - Value: Your TinyMCE API key
+
+5. **Configure TinyMCE Domain**
+   - Your Render deployment domain needs to be approved in your TinyMCE account:
+     - Log in to your [TinyMCE account](https://www.tiny.cloud/auth/login/)
+     - Navigate to "Approved Domains" in your dashboard
+     - Add your Render domain (e.g., `your-app-name.onrender.com`)
+
+6. **Deploy**
+   - Click "Create Static Site"
+   - Render will automatically build and deploy your application
+
+7. **Access Your Site**
+   - Once deployment is complete, your site will be available at `https://your-app-name.onrender.com`
+   - Render will automatically redeploy your site when you push changes to your repository
+
+### Troubleshooting
+
+If you see the error "This domain is not registered in the TinyMCE Customer Portal", make sure you've added your Render domain to the approved domains in your TinyMCE account as described in step 5.
+
 ## Built With
 
 - React
