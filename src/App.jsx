@@ -7,7 +7,21 @@ function App() {
   const [htmlCode, setHtmlCode] = useState('');
   //Just a boolean variable to check if the auto update is enabled or not
   const [autoUpdate, setAutoUpdate] = useState(false);
+  //State to track the screen size
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const editorRef = useRef(null);
+
+  //Effect to handle responsive behavior
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   //The goal of escapeHTML funtion is convert special characters in HTML to HTML entities to display them as text instead of being interpreted as HTML tags by the browser.
   //I think this one is quite important, if you want to save it into database, you should use this function to escape the HTML code.
