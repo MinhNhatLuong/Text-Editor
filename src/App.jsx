@@ -51,7 +51,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>WYSIWYG Text Editor</h1>
+      <h1>WYSIWYG Nhat's Text Editor</h1>
       <div className="editor-container">
         <div className="editor-panel">
           <h2>Editor</h2>
